@@ -27,6 +27,9 @@
                         <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}" class="btn btn-success">
                             Mostra
                         </a>
+                        <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">
+                            Aggiungi
+                        </a>
                     </div>
                 </div>
             </div>

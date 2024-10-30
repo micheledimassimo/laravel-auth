@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -30,7 +30,22 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2|max:64',
+            'company' => 'required|max:64',
+            'workers' => 'min:0|max:9',
+        ]);
+
+
+        $data = $request->all();
+
+        $project = new Project();
+        $project->name = $data['name'];
+        $project->company = $data['company'];
+        $project->workers = $data['workers'];
+        $project->save();
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
