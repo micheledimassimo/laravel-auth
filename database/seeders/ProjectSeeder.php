@@ -13,6 +13,16 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Project::truncate();
+
+        for ($i = 0; $i < 10; $i++) {
+            
+            $project = new Project();
+
+            $project->name = fake()->word();
+            $project->company = fake()->company();
+            $project->workers = fake()->randomDigit();
+            $project->save();
+        }
     }
 }
